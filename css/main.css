@@ -438,6 +438,9 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #FBF6F4;
     border-radius: 0 16px 16px 0;
     box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
   .filters.is-open {
     display: flex;

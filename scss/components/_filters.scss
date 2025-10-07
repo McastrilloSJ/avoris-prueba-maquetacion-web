@@ -37,6 +37,9 @@
         background-color: $color-background-light;
         border-radius: 0 16px 16px 0;
         box-sizing: border-box;
+        overflow-y: auto; // permitir scroll del contenido
+        -webkit-overflow-scrolling: touch; // suaviza scroll en iOS
+        touch-action: pan-y; // permite desplazamiento vertical con el dedo
         
         &.is-open { 
             display: flex; 
