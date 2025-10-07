@@ -1,0 +1,73 @@
+@use '../abstracts/variables' as *;
+
+.footer {
+    width: 100%;
+    margin: 0 auto;
+    border-top: 1px solid $color-border-medium; 
+    &__main {
+        width: 100%; 
+        height: 128px;
+        background-color: $color-background-footer;
+        padding: 48px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        
+        @media (max-width: $bp-tablet - 1px) {
+            width: 100%; 
+            height: 128px; 
+            padding: 32px 20px; 
+            justify-content: flex-start; 
+            margin: 0;
+        }
+    }
+
+    &__logo {
+        img { 
+            height: auto; 
+            max-height: 32px;
+            
+            @media (max-width: $bp-tablet - 1px) {
+                width: auto; 
+                height: 32px; 
+                max-height: none; 
+                margin-left: 8px; 
+            }
+        }
+    }
+
+    &__bottom {
+        width: 100%;
+        height: 52px;
+        padding: 16px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-border-light;
+        
+        @media (max-width: $bp-tablet - 1px) {
+            height: 52px; 
+            padding: 16px 20px; 
+            justify-content: flex-start; 
+        }
+    }
+
+    &__copy {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: $size-sm;
+        line-height: 20px;
+        letter-spacing: 0%;
+        color: $color-button-primary;
+        vertical-align: middle;
+        margin: 0;
+        text-align: center; 
+        
+        @media (max-width: $bp-tablet - 1px) {
+            font-size: $size-sm; 
+            font-weight: 700; 
+            line-height: 20px;
+        }
+    }
+}

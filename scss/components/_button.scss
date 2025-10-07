@@ -1,0 +1,66 @@
+@use "sass:color";
+@use '../abstracts/variables' as *;
+
+.button {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &--primary {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 139px;
+        height: 48px;
+        padding: 0;
+        font-family: $font-family-secondary;
+        font-weight: 600;
+        font-size: $size-base;
+        line-height: 24px;
+        background-color: $color-button-primary;
+        color: $color-light;
+        border-color: $color-button-primary;
+        
+        &:hover {
+            background-color: #5A2B5A;
+            transform: scale(1);
+        }
+    }
+
+    &--secondary {
+        background-color: transparent;
+        color: $color-dark;
+        border-color: #e0e0e0;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:hover {
+            background-color: #f0f0f0;
+            transform: scale(1);
+        }
+    }
+
+    &--tertiary {
+        background-color: $color-light;
+        color: $color-primary;
+        border-color: $color-primary;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+
+        &:hover {
+            background-color: $color-primary;
+            color: $color-light;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+// Colores
+$color-primary: #5D37F3;
+$color-button-primary: #622F60;
+$color-secondary: #FF8F50;
+$color-dark: #1E1E1E;
+$color-text-dark: #342E34;
+$color-light: #FFFFFF;
+$color-gray: #8A8A8A;
+$color-background: #F8F8F8;
+$color-overlay: rgba(0, 0, 0, 0.5);
+
+// Colores adicionales que se repiten
+$color-background-light: #FBF6F4; // Fondo de cards y filtros
+$color-background-footer: #fcf6f4; // Fondo del footer
+$color-border-light: #E0D9E0; // Bordes sutiles
+$color-border-medium: #E2D7DD; // Bordes medios
+$color-text-hero: #4E250E; // Texto del botón hero
+$color-text-subtitle: #6B7D8D; // Subtítulos
+$color-text-title: #2F222F; // Títulos principales
+$color-accent: #B85C28; // Color de acento para filtros activos
+
+// Colores con alpha frecuentes
+$color-white-72: #FFFFFFB8; // blanco ~72% opacidad
+$shadow-black-20: #00000033; // negro 20% opacidad
+
+// Tipografía
+$font-family-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-family-secondary: 'Nunito', sans-serif;
+// Usa $size-base como tamaño base (16px)
+
+// Tamaños que se repiten
+$size-xs: 12px; // Texto pequeño
+$size-sm: 14px; // Texto mediano
+$size-base: 16px; // Texto base
+$size-lg: 18px; // Texto grande
+$size-md: 20px; // Tamaño intermedio para botones (filters)
+$size-22: 22px; // Tamaño específico 22px
+$size-xl: 24px; // Texto extra grande
+$size-2xl: 32px; // Texto muy grande
+$size-15: 15px; // Tamaño específico 15px
+$size-28: 28px; // Tamaño específico 28px
+$size-30: 30px; // Tamaño específico 30px
+$size-34: 34px; // Tamaño específico 34px
+$size-38: 38px; // Tamaño específico 38px
+
+
+// Espaciado
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+$spacing-2xl: 32px;
+$spacing-3xl: 48px;
+
+// Dimensiones específicas del diseño
+$card-width: 264px; // Ancho de las cards
+$card-height: 376px; // Alto de las cards
+$filter-width: 264px; // Ancho del filtro en desktop
+$filter-width-tablet: 296px; // Ancho del filtro en tablet
+$hero-height: 400px; // Alto del hero
+$header-height: 80px; // Alto del header
+
+// Breakpoints (Puntos de ruptura para responsive)
+$bp-tablet: 768px;
+$bp-desktop: 1200px;

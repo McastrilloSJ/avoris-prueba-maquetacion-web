@@ -1,0 +1,285 @@
+@use '../abstracts/variables' as *;
+
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: $color-light; z-index: 2000; 
+    opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+    transform: translateY(100%); // deslizar desde abajo en móvil
+    display: flex; flex-direction: column;
+
+    &.is-open { 
+        opacity: 1; visibility: visible; 
+        transform: translateY(0); // mostrar en su posición
+    }
+    
+    @media (min-width: $bp-tablet) {
+        background-color: $color-overlay;
+        align-items: center; justify-content: center; padding: 1rem;
+        transform: scale(0.9); // escala en tablet/desktop
+        display: flex;
+        
+        &.is-open { 
+            transform: scale(1); 
+        }
+    }
+
+    &__content {
+        background-color: $color-light; 
+        border-radius: 24px 24px 0 0; 
+        width: 100%; 
+        height: 100%; 
+        border: 1px solid var(--color-border-medium-default, #{$color-border-light});
+        padding: 0;
+        margin: 0;
+        display: flex; 
+        flex-direction: column;
+        box-sizing: border-box;
+        
+        @media (min-width: $bp-tablet) {
+            border-radius: 24px; 
+            width: 400px; 
+            height: 304px; 
+            min-width: 400px; 
+            max-width: 400px;
+            transform: scale(0.9); 
+            transition: transform 0.3s;
+        }
+    }
+
+    &.is-open &__content { 
+        @media (min-width: $bp-tablet) {
+            transform: scale(1); 
+        }
+    }
+
+    &__header {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+        border-bottom: 1px solid var(--color-border-medium-default, #{$color-border-light}); 
+        padding: 20px 24px; 
+        margin: 0;
+        background-color: $color-background-light;
+        border-radius: 24px 24px 0 0;
+        height: 56px;
+        
+        @media (max-width: $bp-tablet - 1px) {
+            border-radius: 0; 
+            padding: 16px 20px; 
+        }
+    }
+
+    &__title { 
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: $size-lg;
+        line-height: 24px;
+        letter-spacing: 0px;
+        color: $color-text-dark;
+        margin: 0;
+        vertical-align: middle;
+    }
+
+    #price-modal-title {
+        font-family: "Nunito", sans-serif;
+        font-weight: 700;
+        font-size: $size-lg;
+        line-height: 22px;
+        letter-spacing: 0px;
+        color: $color-text-dark;
+        text-align: right;
+    }
+
+    &__close-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: rgba(52, 46, 52, 0.1);
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &__body {
+        height: 184px;
+        background-color: $color-light;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        flex-grow: 1;
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    &__destination-info {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+    }
+
+    &__destination {
+        font-family: 'Syne', system-ui, sans-serif;
+        font-weight: 700;
+        font-size: $size-lg;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: $color-button-primary;
+        margin: 0;
+        
+        @media (max-width: $bp-tablet - 1px) {
+            font-size: $size-base; 
+        }
+    }
+
+    &__duration {
+        font-family: 'Syne', system-ui, sans-serif;
+        font-weight: 500;
+        font-size: $size-lg;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: $color-text-dark;
+        margin: 0;
+        
+        @media (max-width: $bp-tablet - 1px) {
+            font-size: $size-base; 
+        }
+    }
+
+    &__price-details {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        flex-grow: 1;
+        
+        @media (max-width: $bp-tablet - 1px) {
+            flex-grow: 0; 
+        }
+    }
+
+    &__mobile-total {
+        display: block; 
+        margin-top: -8px; 
+        @media (min-width: $bp-tablet) {
+            display: none; 
+        }
+    }
+
+
+    &__separator {
+        height: 1px;
+        background-color: $color-border-light;
+        margin: 16px 0; 
+        width: 100%;
+    }
+
+    &__price-row--total {
+        margin-top: 16px; 
+        margin-bottom: 16px; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__price-label--total {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: $size-base; 
+        line-height: 20px;
+        color: $color-text-dark;
+    }
+
+    &__price-amount--total {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700; 
+        font-size: $size-22; 
+        line-height: 24px;
+        color: $color-text-dark;
+    }
+
+    &__price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+    }
+
+    &__price-label {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 500;
+        font-size: $size-base;
+        line-height: 20px;
+        letter-spacing: 0px;
+        color: $color-text-dark;
+        text-align: left;
+        
+        @media (max-width: $bp-tablet - 1px) {
+            font-size: $size-base;
+        }
+    }
+
+    &__price-amount {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: $size-lg;
+        line-height: 20px;
+        letter-spacing: 0%;
+        color: $color-text-dark;
+        text-align: right;
+        
+        @media (max-width: $bp-tablet - 1px) {
+            font-size: $size-lg; 
+        }
+    }
+
+    &__footer {
+        height: 64px;
+        background-color: $color-background-light;
+        padding: 20px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 0 0 24px 24px; 
+        
+        @media (max-width: $bp-tablet - 1px) {
+            display: none; 
+        }
+    }
+
+    &__total-label {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: $size-lg;
+        line-height: 22px;
+        letter-spacing: 0px;
+        color: $color-text-dark;
+        text-align: right;
+    }
+
+    &__total-amount {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: $size-22;
+        line-height: 24px;
+        letter-spacing: 0px;
+        color: $color-text-dark;
+        text-align: right;
+    }
+}
+
+// Reglas de total (sin !important) con mayor especificidad
+.modal .modal__price-label--total { font-weight: 700; font-size: $size-base; line-height: 20px; color: $color-text-dark; }
+.modal .modal__price-amount--total { font-weight: 700; font-size: $size-22; line-height: 24px; color: $color-text-dark; }

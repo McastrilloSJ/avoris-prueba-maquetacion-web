@@ -1,0 +1,168 @@
+@use '../abstracts/variables' as *;
+
+.main-content {
+    background-color: $color-light;
+}
+
+.main-content__container {
+    padding: 1.5rem 1rem; 
+    width: 100%; 
+
+    @media (min-width: $bp-tablet) {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem; 
+    }
+
+    @media (min-width: $bp-desktop) {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 3rem 2rem; 
+    }
+}
+
+.adventures-section__header {
+    text-align: center;
+    margin: 2rem 1rem 3rem 1rem; 
+    
+    @media (min-width: $bp-tablet) {
+        margin: 2rem 0 1.5rem 0; 
+    }
+    
+    @media (min-width: $bp-desktop) {
+        margin: 2rem 0 1.5rem 0;
+    }
+    
+    h1 { 
+        font-family: 'Syne', system-ui, sans-serif; 
+        font-weight: 700; 
+        font-style: Bold;
+        font-size: $size-30;
+        line-height: 32px; 
+        letter-spacing: 0%;
+        text-align: center;
+        color: $color-text-title; 
+        margin-bottom: 1.5rem;
+        max-width: 280px; 
+        margin-left: auto;
+        margin-right: auto; 
+        
+        @media (min-width: $bp-tablet) and (max-width: $bp-desktop - 1px) {
+            font-size: $size-34; 
+            line-height: 36px;
+            max-width: none; 
+            margin-inline: 0;
+        }
+        
+        @media (min-width: $bp-tablet) {
+            font-size: $size-2xl;
+            line-height: 36px;
+            max-width: none; 
+            margin-inline: 0;
+        }
+        
+        @media (min-width: $bp-desktop) {
+            font-size: $size-38; 
+            line-height: 40px; 
+            max-width: none; 
+            margin-inline: 0;
+        }
+    }
+    
+    p { 
+        font-family: 'Nunito', sans-serif; 
+        font-weight: 400; 
+        font-style: Regular;
+        font-size: $size-md; 
+        line-height: 24px; 
+        letter-spacing: 0%;
+        text-align: center;
+        color: $color-text-subtitle; 
+        max-width: 320px; 
+        margin: 0 auto 2rem auto; 
+        
+        @media (min-width: $bp-tablet) and (max-width: $bp-desktop - 1px) {
+            font-size: $size-22; 
+            line-height: 24px;
+            max-width: 58ch; 
+            margin: 0 auto 1.5rem auto; 
+        }
+        
+        @media (min-width: $bp-tablet) {
+            font-size: $size-lg;
+            line-height: 24px;
+            max-width: 58ch; 
+            margin: 0 auto 1.5rem auto; 
+        }
+        
+        @media (min-width: $bp-desktop) {
+            font-size: $size-22; 
+            line-height: 26px; 
+            max-width: 58ch; 
+            margin: 0 auto 1.5rem auto; 
+        }
+    }
+}
+
+.adventures-section {
+    width: 100%;
+    min-width: 0; 
+    
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem; 
+        width: 100%; 
+
+        @media (min-width: 600px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @media (min-width: $bp-desktop) {
+            width: 840px; 
+            grid-template-columns: repeat(3, 264px); 
+            grid-auto-rows: 376px; 
+            gap: 24px; 
+        }
+    }
+}
+
+.main-content__row {
+    display: grid;
+    grid-template-columns: 264px 840px; 
+    gap: 24px;
+    align-items: start;
+    
+    @media (max-width: $bp-desktop - 1px) {
+        display: block; 
+    }
+}
+
+.adventures-column {
+    width: 100%; 
+    
+    @media (min-width: $bp-desktop) {
+        width: 840px; 
+    }
+}
+
+
+@media (min-width: $bp-tablet) and (max-width: $bp-desktop - 1px) {
+    .main-content__row {
+        display: block; 
+    }
+
+
+    .adventures-column {
+        width: 100%; 
+    }
+
+    .adventures-section__grid {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 16px; 
+    }
+
+    #open-filters-button {
+        display: inline-flex;
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "wavelens",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing responsive Wavelens (HTML5, Sass, Vanilla JS, BEM, a11y)",
+  "scripts": {
+    "build:css": "sass scss/main.scss css/main.css --no-source-map",
+    "dev:css": "sass --watch scss/main.scss css/main.css --embed-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.80.3"
+  }
+}
+

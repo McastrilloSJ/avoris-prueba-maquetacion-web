@@ -1,0 +1,226 @@
+@use "sass:color";
+@use '../abstracts/variables' as *;
+
+.header {
+    background-color: $color-light;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 100;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 1px;
+        background-color: $color-secondary; 
+    }
+    
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 1rem; 
+        
+        @media (min-width: $bp-desktop) {
+            padding: 0 2rem;
+        }
+    }
+
+    &__logo img {
+        width: 108.53px;
+        height: 24px;
+        
+        @media (min-width: $bp-desktop) {
+            width: 144.7px;
+            height: 32px;
+        }
+    }
+
+    &__nav--desktop, &__reserve-button--desktop { 
+        display: none; 
+    }
+    
+    &__menu-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        img {
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    &__nav--mobile {
+        background-color: $color-light;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        display: none; 
+        flex-direction: column;
+        gap: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-top: 1px solid $color-border-light;
+        z-index: 1000;
+
+        &.is-open {
+            display: flex;
+        }
+
+        a {
+            font-family: $font-family-secondary;
+            font-weight: 600;
+            font-size: $size-base;
+            line-height: 20px;
+            color: $color-text-dark;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            text-align: left; 
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; 
+
+            img {
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+            }
+
+            &:hover, &:focus-visible {
+                font-weight: 700;
+                background-color: $color-background;
+            }
+
+            &.button {
+                margin-top: 0.5rem;
+                justify-content: center; 
+                width: 100%; 
+                height: 48px;
+                min-height: 48px;
+                gap: 10px;
+                padding: 12px 40px;
+                border-radius: 208px;
+                color: $color-light; 
+
+                &:hover {
+                    background-color: color.adjust($color-button-primary, $lightness: -8%);
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+
+    @media (min-width: $bp-desktop) {
+        &__container {
+            display: grid;
+            grid-template-columns: auto 1fr auto; // logo | nav | botón
+            align-items: center;
+            column-gap: 8rem;
+            grid-template-areas: 'logo nav cta';
+        }
+        &__logo { grid-area: logo; justify-self: start; }
+        &__nav--desktop { grid-area: nav; }
+        &__reserve-button--desktop { grid-area: cta; justify-self: end; }
+        
+        &__menu-button {
+            display: none;
+        }
+
+        &__nav--mobile { 
+            display: none; 
+        }
+
+        &__nav--desktop {
+            display: flex;
+            gap: 5.5rem;
+            height: 80px;
+            justify-self: center; 
+            flex-wrap: nowrap;
+            white-space: nowrap;
+
+            a {
+                font-weight: 500;
+                color: $color-text-dark;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                position: relative;
+                
+                img { 
+                    height: 20px;
+                }
+
+                // Texto visible
+                span {
+                    font-weight: inherit;
+                    position: relative;
+                    display: inline-block;
+
+                    // Doble fantasma en negrita e invisible
+                    &::after {
+                        content: attr(data-text);
+                        display: block;
+                        font-weight: 700;
+                        height: 0;
+                        overflow: hidden;
+                        visibility: hidden;
+                    }
+                }
+
+                &.is-active {
+                    font-weight: 700;
+                    transform: translateZ(0);
+                }
+
+                &.is-active::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 1px; 
+                    left: 0;
+                    width: 100%;
+                    height: 1px; 
+                    background-color: $color-secondary;
+                    transition: opacity 0.3s ease-in-out;
+                }
+
+                &.is-active::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 2px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0; 
+                    height: 0; 
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-bottom: 8px solid $color-secondary;
+                    transition: opacity 0.3s ease-in-out;
+                }
+            }
+        }
+        
+        &__reserve-button--desktop { 
+            display: inline-flex;
+        }
+    }
+}

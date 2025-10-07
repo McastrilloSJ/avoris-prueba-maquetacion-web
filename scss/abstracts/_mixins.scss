@@ -1,0 +1,127 @@
+// ===================================
+// _mixins.scss
+// Mixins para Media Queries y patrones comunes
+// ===================================
+
+@use 'variables' as v; // Importamos variables para usar los breakpoints
+
+// ===================================
+// MEDIA QUERIES
+// ===================================
+
+// Mixin para TABLET (min-width: 768px)
+@mixin tablet {
+    @media (min-width: v.$bp-tablet) {
+        @content;
+    }
+}
+
+// Mixin para DESKTOP (min-width: 1200px)
+@mixin desktop {
+    @media (min-width: v.$bp-desktop) {
+        @content;
+    }
+}
+
+// Mixin para TABLET ONLY (768px - 1199px)
+@mixin tablet-only {
+    @media (min-width: v.$bp-tablet) and (max-width: v.$bp-desktop - 1px) {
+        @content;
+    }
+}
+
+// Mixin para MOBILE (max-width: 767px)
+@mixin mobile {
+    @media (max-width: v.$bp-tablet - 1px) {
+        @content;
+    }
+}
+
+// ===================================
+// LAYOUT PATTERNS
+// ===================================
+
+// Mixin para centrar elementos con flexbox
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Mixin para flexbox con dirección y alineación
+@mixin flex($direction: row, $align: center, $justify: flex-start) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+// Mixin para posicionamiento absoluto
+@mixin absolute($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    position: absolute;
+    @if $top != auto { top: $top; }
+    @if $right != auto { right: $right; }
+    @if $bottom != auto { bottom: $bottom; }
+    @if $left != auto { left: $left; }
+}
+
+// ===================================
+// TIPOGRAFÍA
+// ===================================
+
+// Mixin para texto con Nunito
+@mixin text-nunito($weight: 400, $size: v.$size-base, $line-height: 1.5) {
+    font-family: v.$font-family-secondary;
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $line-height;
+}
+
+// Mixin para texto con Syne
+@mixin text-syne($weight: 700, $size: v.$size-lg, $line-height: 1.2) {
+    font-family: 'Syne', system-ui, sans-serif;
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $line-height;
+}
+
+// ===================================
+// COMPONENTES
+// ===================================
+
+// Mixin para botones
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 208px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+// Mixin para cards
+@mixin card-base {
+    background-color: v.$color-light;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(v.$color-dark, 0.08);
+    overflow: hidden;
+}
+
+// ===================================
+// UTILIDADES
+// ===================================
+
+// Mixin para transiciones
+@mixin transition($properties: all, $duration: 0.3s, $easing: ease-in-out) {
+    transition: $properties $duration $easing;
+}
+
+// Mixin para hover effects
+@mixin hover-lift {
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+}
